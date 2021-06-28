@@ -1,6 +1,6 @@
 package com.nb.news.bessarabianinform;
 
-import com.github.javafaker.Faker;
+import com.nb.news.bessarabianinform.domain.Article;
 import com.nb.news.bessarabianinform.service.NewsParser;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -12,7 +12,6 @@ import java.util.List;
 @SpringBootApplication
 @RestController
 public class BessarabianinformApplication {
-    private static final Faker FAKER = new Faker();
     private final NewsParser parser;
 
     public BessarabianinformApplication(NewsParser parser) {
@@ -24,7 +23,7 @@ public class BessarabianinformApplication {
     }
 
     @GetMapping
-    public List<String> getNews() {
+    public List<Article> getNews() {
         return parser.getNews();
     }
 

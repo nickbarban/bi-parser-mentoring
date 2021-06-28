@@ -1,5 +1,7 @@
 package com.nb.news.bessarabianinform.service;
 
+import com.nb.news.bessarabianinform.domain.Article;
+
 import java.util.List;
 
 /**
@@ -8,5 +10,5 @@ import java.util.List;
 // TODO by nbarban: 26/06/21 Should be moved to common
 public interface NewsParser {
 
-    List<String> getNews();
+    List<Article> getNews();
 }
