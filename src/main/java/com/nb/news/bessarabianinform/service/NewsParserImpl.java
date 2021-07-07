@@ -38,7 +38,6 @@ public class NewsParserImpl implements NewsParser {
             final Element firstLenta = lenta.first();
             final Elements firstLentDivs = firstLenta.select("div");
 
-            LocalDate yesterday;
             for (Element e : firstLentDivs) {
                 if (e.select("dfn") != null && e.select("dfn").first() != null) {
                     final Article article = new Article();
@@ -61,21 +60,6 @@ public class NewsParserImpl implements NewsParser {
                     }
 
                     articles.add(article);
-                } else {
-                    log.info(e.toString());
-                    final Elements dateDiv = e.select("div.tabview-main-date");
-                    if (dateDiv != null) {
-                        final String date = dateDiv.text().trim();
-
-                        if (StringUtils.isNotBlank(date)) {
-                            try {
-                                yesterday = LocalDate.parse(date, DateTimeFormatter.ofPattern("dd.MM.yyyy"));
-                                log.info("New start date is: {}", yesterday);
-                            } catch (Exception ex) {
-                                log.error(String.format("Could not parse date text for div: %s", date), ex);
-                            }
-                        }
-                    }
                 }
             }
 
