@@ -1,0 +1,9 @@
+GET {{host}}/
+
+{%
+    client.log("start testing")
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+        client.assert(response.body.length > 0, "Body is empty");
+    });
+%}

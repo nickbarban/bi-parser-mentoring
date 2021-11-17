@@ -2,7 +2,6 @@ package com.nb.news.bessarabianinform.service;
 
 import com.nb.news.bessarabianinform.domain.Article;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang3.StringUtils;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -31,6 +30,7 @@ public class NewsParserImpl implements NewsParser {
     public List<Article> getNews() {
         final var url = "https://bessarabiainform.com";
         final List<Article> articles = new ArrayList<>();
+        log.info("Parse {}", url);
 
         try {
             final var document = Jsoup.connect(url).get();
