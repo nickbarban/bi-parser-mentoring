@@ -36,6 +36,7 @@ public class NewsSecondParserImpl implements NewsSecondParser{
             final Elements firstListDivs = firstList.select("li");
 
             for (Element e : firstListDivs) {
+
                 if (e.select("span") != null && e.select("span").first() != null) {
                     final Article article = new Article();
                     article.setLink(e.select("a").first().attr("href"));
