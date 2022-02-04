@@ -28,4 +28,5 @@ public class BessarabianinformApplication {
     public List<Article> getNews() {
         return parser.getNews().stream().sorted(Comparator.comparing(Article::getDate)).collect(Collectors.toList());
     }
+
 }
