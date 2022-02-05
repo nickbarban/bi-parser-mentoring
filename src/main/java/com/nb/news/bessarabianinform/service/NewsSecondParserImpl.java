@@ -31,7 +31,9 @@ public class NewsSecondParserImpl implements NewsSecondParser{
 
         try {
             final var document = Jsoup.connect(url).get();
-            final Elements list = document.select("div.cck_module_list");
+//            final Elements list = document.select("div.moduletable last-news");
+            final Elements list = document.getElementsByAttributeValue("class", "moduletable last-news");
+
             final Element firstList = list.first();
             final Elements firstListDivs = firstList.select("li");
 
