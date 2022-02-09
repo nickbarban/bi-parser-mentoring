@@ -13,6 +13,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -34,20 +35,20 @@ public class NewsSecondParserImpl implements NewsSecondParser{
 //            final Elements list = document.select("div.moduletable last-news");
             final Elements list = document.getElementsByAttributeValue("class", "moduletable last-news");
 
-            final Element firstList = list.first();
-            final Elements firstListDivs = firstList.select("li");
+//            final Element firstList = list.first();
+//            final Elements firstListDivs = firstList.select("li");
 
-            for (Element e : firstListDivs) {
+            for (Element e : list) {
                 if (e.select("span") != null && e.select("span").first() != null) {
                     final Article article = new Article();
                     article.setLink(e.select("a").first().attr("href"));
                     article.setTitle(e.select("a").first().text());
                     final String date = e.select("span.date").first().text();
 
-                    if (date.equalsIgnoreCase("Cегодня")) {
+                    if (date.contains("Сегодня")) {
                         article.setDate(LocalDateTime.of(LocalDate.now(), LocalTime.parse(e.select("span").first().text())));
 
-                    } else if (date.equalsIgnoreCase("Вчера")) {
+                    } else if (date.contains("Вчера")) {
                         article.setDate(LocalDateTime.of(LocalDate.now().minusDays(1), LocalTime.parse(e.select("span").first().text())));
                     } else {
                         try {

@@ -50,10 +50,10 @@ class BessarabianinformApplicationTests {
 
         Assert.isTrue(!firstListDivs.isEmpty());
 
-//          List<Article> articles = suts.getNews2();
-//        Assertions.assertThat(articles).isNotEmpty().doesNotContainNull().allMatch(article -> {
-//            Assertions.assertThat(article).hasNoNullFieldsOrProperties();
-//            return true;
-//        });
+          List<Article> articles = suts.getNews2();
+        Assertions.assertThat(articles).isNotEmpty().doesNotContainNull().allMatch(article -> {
+            Assertions.assertThat(article).hasNoNullFieldsOrProperties();
+            return true;
+        });
     }
 }
